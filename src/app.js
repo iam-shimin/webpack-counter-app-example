@@ -4,7 +4,7 @@ import createMessage from 'components/message';
 
 import 'style/index.css';
 
-import { getSavedData, setSavedData } from 'storage';
+import data, { getSavedData, setSavedData } from 'storage';
 
 
 const [app] = document.getElementsByTagName('main');
@@ -15,7 +15,7 @@ const addCounterButton = document.getElementById('add-counter');
 let currentCountersCount = {value: 0};
 let messageDestroyFunction = {value: null}; // destroy function
 let drawerUpdateFunction = {value: null};
-const data = {/*id: {title, note, count, root, requireCacheSync}*/}
+// const data = {/*id: {title, note, count, root, requireCacheSync}*/}
 
 score.textContent = currentCountersCount.value;
 

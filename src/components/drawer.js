@@ -1,3 +1,5 @@
+import data from 'storage';
+
 const drawerContents = `
 <header id="title-bar">
 	<h1 contenteditable="true">{title}</h1>

@@ -65,7 +65,7 @@ export default function create(parent = document.body, props) {
 
 	// LIFECYCLE
 
-	function update(title, count) {
+	function update(title = 'No title', count = null) {
 		if (state.title !== title) {
 			titleNode.textContent = title;
 			props.onCounterDataChange('title', title);
