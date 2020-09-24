@@ -8,7 +8,7 @@ const path = require('path');
 
 module.exports = {
 	mode: 'development',
-	entry: path.resolve(__dirname, 'src', 'js', 'app.js'),
+	entry: path.resolve(__dirname, 'src', 'app.js'),
 	output: {
 		publicPath: '/dist'
 	},
