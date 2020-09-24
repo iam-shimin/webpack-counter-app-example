@@ -143,6 +143,10 @@ article {
 
 header h3 {
   color: #fff;
+  width: 18rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 header {
