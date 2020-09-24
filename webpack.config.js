@@ -14,5 +14,10 @@ module.exports = {
 	},
 	resolve: {
 		modules: ['src', path.resolve(__dirname, 'src', 'js'), 'node_modules']
+	},
+	module: {
+		rules: [
+			{test: /\.css$/, use: ['style-loader', 'css-loader']}
+		]
 	}
 }

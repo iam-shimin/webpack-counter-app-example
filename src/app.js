@@ -2,6 +2,8 @@ import createCounter from 'components/counter';
 import createDrawer from 'components/drawer';
 import createMessage from 'components/message';
 
+import 'style/index.css';
+
 import { getSavedData, setSavedData } from 'storage';
 
 
