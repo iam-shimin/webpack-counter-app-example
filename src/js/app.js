@@ -1,4 +1,8 @@
-// import counter from './counterComponent';
+import createCounter from 'components/counter';
+import createDrawer from 'components/drawer';
+import createMessage from 'components/message';
+
+import { getSavedData, setSavedData } from 'storage';
 
 
 const [app] = document.getElementsByTagName('main');

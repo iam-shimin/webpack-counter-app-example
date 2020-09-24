@@ -16,7 +16,7 @@ const counterContent = `
 </div>`;
 
 // export default 
-const createCounter = function create(parent = document.body, props) {
+export default function create(parent = document.body, props) {
 	const state = {
 		title: null,
 		count: null

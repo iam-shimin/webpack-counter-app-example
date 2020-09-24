@@ -5,8 +5,7 @@ const content = `
 <h2 class="msg">${initTitle}</h2>
 <p>${initMessage}</p>`;
 
-// export default
-const createMessage = function create(parent = document.body) {
+export default function create(parent = document.body) {
 	const node = document.createElement('div');
 	node.className = 'message-box';
 	node.innerHTML = content;

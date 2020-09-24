@@ -5,7 +5,7 @@ const drawerContents = `
 </header>
 <p id="note" contenteditable="true">{note}</p>`;
 
-const createDrawer = function create(parent = document.body, props) {
+export default function create(parent = document.body, props) {
 	const state = {
 		isOpen: false,
 		currentId: null
@@ -44,8 +44,8 @@ const createDrawer = function create(parent = document.body, props) {
 
 		if (isToggleStateAction) return;
 
-		const titleText = data[id]?.title || 'No title';
-		const noteText = data[id]?.note || 'No note';
+		const titleText = (data[id] && data[id].title) || 'No title';
+		const noteText = (data[id] && data[id].note) || 'No note';
 		title.textContent = titleText;
 		note.textContent = noteText;
 		state.currentId = id;
