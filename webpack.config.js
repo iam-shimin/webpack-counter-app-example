@@ -15,7 +15,7 @@ module.exports = {
 	mode: 'development',
 	entry: path.resolve(__dirname, 'src', 'app.js'),
 	// output: {
-	// 	publicPath: '/dist'
+	// 	publicPath: '/dist',
 	// },
 	resolve: {
 		modules: ['src', path.resolve(__dirname, 'src', 'js'), 'node_modules']
@@ -36,5 +36,9 @@ module.exports = {
 			// cache,
 			// hash,
 		})
-	]
+	],
+
+	devServer: {
+		open: true
+	}
 }
