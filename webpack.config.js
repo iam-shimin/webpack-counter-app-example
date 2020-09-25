@@ -18,9 +18,11 @@ module.exports = {
 			template: 'index.html',
 			title: 'Counter | Create counters ...',
 			scriptLoading: 'defer',
-			showErrors: true
+			showErrors: true,
 			// favicon,
-			// meta,
+			meta: {
+				viewport: 'width=device-width, initial-scale=1'
+			},
 			// cache,
 			// hash,
 		})
