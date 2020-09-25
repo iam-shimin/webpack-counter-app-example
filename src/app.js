@@ -1,6 +1,7 @@
 import createCounter from 'components/counter';
 import createDrawer from 'components/drawer';
 import createMessage from 'components/message';
+import createScore from 'components/score';
 
 import 'style/index.css';
 
@@ -8,28 +9,29 @@ import data, { getSavedData, setSavedData } from 'storage';
 
 
 const [app] = document.getElementsByTagName('main');
-const score = document.getElementById('score');
+const scoreUpdateFunction = createScore();
 const addCounterButton = document.getElementById('add-counter');
 
 // state
-let currentCountersCount = {value: 0};
-let messageDestroyFunction = {value: null}; // destroy function
-let drawerUpdateFunction = {value: null};
-// const data = {/*id: {title, note, count, root, requireCacheSync}*/}
+const state = {
+	currentCountersCount: 0,
+	messageDestroyFunction: null,
+	drawerUpdateFunction: null
+}
 
-score.textContent = currentCountersCount.value;
+scoreUpdateFunction(state.currentCountersCount);
 
 addCounterButton.addEventListener('click', event => {
 	const id = Date.now() + Math.random();
-	if (currentCountersCount.value === 0 && messageDestroyFunction.value) {
-		messageDestroyFunction.value();
-		messageDestroyFunction.value = null;
+	if (state.currentCountersCount === 0 && state.messageDestroyFunction) {
+		state.messageDestroyFunction();
+		state.messageDestroyFunction = null;
 	}
 
-	++currentCountersCount.value;
+	++state.currentCountersCount;
 
 	data[id] = {root: counterWithActions(id)};
-	score.textContent = currentCountersCount.value;
+	scoreUpdateFunction(state.currentCountersCount);
 })
 
 function counterWithActions(id) {
@@ -37,10 +39,10 @@ function counterWithActions(id) {
 		dataId: id,
 		onCounterBoxClick() {
 			const dataId = this.dataId;
-			if (drawerUpdateFunction.value) {
-				drawerUpdateFunction.value(dataId);
+			if (state.drawerUpdateFunction) {
+				state.drawerUpdateFunction(dataId);
 			} else {
-				drawerUpdateFunction.value = createDrawer(document.body, {
+				state.drawerUpdateFunction = createDrawer(document.body, {
 					id: dataId,
 					onInput(id, name, value) {
 						data[id][name] = value;
@@ -53,9 +55,9 @@ function counterWithActions(id) {
 		},
 		onDelete() {
 			// check count, update score, show/hide message,
-			--currentCountersCount.value;
-			score.textContent = currentCountersCount.value;
-			showMessage(currentCountersCount);
+			--state.currentCountersCount;
+			scoreUpdateFunction(state.currentCountersCount);
+			showMessage(state.currentCountersCount);
 			if (data[this.dataId].requireCacheSync) {
 				const savedDataLocal = getSavedData();
 				delete savedDataLocal[this.dataId];
@@ -77,12 +79,12 @@ function counterWithActions(id) {
 }
 
 function showMessage(currentCountersCount) {
-	if (currentCountersCount.value === 0) {
+	if (currentCountersCount === 0) {
 		// show message
 		// const message = import('./messageComponent').then(module => {
 		// 	messageDestroyFunction.value = module.default(app);
 		// });
-		messageDestroyFunction.value = createMessage(app);
+		state.messageDestroyFunction = createMessage(app);
 	}
 }
 
@@ -98,8 +100,8 @@ for (let cId in savedData) {
 		requireCacheSync: true
 	};
 	data[cId].root.update(title, count);
-	++currentCountersCount.value;
+	++state.currentCountersCount;
 }
 
-showMessage(currentCountersCount);
-score.textContent = currentCountersCount.value;
+showMessage(state.currentCountersCount);
+scoreUpdateFunction(state.currentCountersCount);
