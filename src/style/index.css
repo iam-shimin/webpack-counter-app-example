@@ -12,6 +12,15 @@ html, body, main {
 	height: 100%;
 }
 
+html {
+  font-size: 2em;
+}
+
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 1em;
+  }
+}
 
 main {
   display: flex;
@@ -19,6 +28,14 @@ main {
   padding: 0 3rem;
   overflow-x: auto;
   background: #6cac08;
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 3rem;
+  }
 }
 
 
