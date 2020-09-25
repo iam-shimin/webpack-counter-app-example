@@ -14,11 +14,6 @@
 	margin-left: 15%;
 }
 
-.msg,
-.message-box p {
-	width: max-content;
-}
-
 .msg {
 	font-size: 2.5rem;
 	color: #443e3e;
