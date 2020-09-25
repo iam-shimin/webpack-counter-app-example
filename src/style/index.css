@@ -12,16 +12,6 @@ html, body, main {
 	height: 100%;
 }
 
-html {
-  font-size: 2em;
-}
-
-@media screen and (min-width: 900px) {
-  html {
-    font-size: 1em;
-  }
-}
-
 main {
   display: flex;
   align-items: center;

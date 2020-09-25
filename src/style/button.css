@@ -21,13 +21,19 @@
 .btn-float {
 	--primary: green;
   position: fixed;
-  bottom: 5rem;
-  right: 5rem;
-  font-size: 3rem;
+  bottom: 1em;
+  right: 1em;
+  font-size: 2.3rem;
   z-index: 200;
 }
 
 .btn-round {
   border: solid 0.15em;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 900px) {
+  .btn-float {
+    font-size: 3rem;
+  }
 }
