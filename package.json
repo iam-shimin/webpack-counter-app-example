@@ -1,21 +1,24 @@
 {
   "name": "counter",
   "version": "1.0.0",
-  "description": "",
+  "description": "A counter app.",
+  "homepage": "http://iam-shimin.github.io/webpack-counter-app-example",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack --prod"
+    "build": "webpack --prod",
+    "deploy": "gh-pages -d build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["webpack", "example", "spa", "counter"],
+  "author": "Shimin Mathew",
   "license": "ISC",
   "dependencies": {
     "css-loader": "^4.3.0",
     "style-loader": "^1.2.1"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^4.5.0"
+    "html-webpack-plugin": "^4.5.0",
+    "gh-pages": "^3.1.0"
   }
 }
