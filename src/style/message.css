@@ -1,0 +1,29 @@
+#total {
+	position: fixed;
+	top: 0;
+	font-size: 2rem;
+	text-align: center;
+	width: 100%;
+	padding: 0.5rem;
+	color: grey;
+	background: #fff;
+	box-shadow: inset -0.5rem -1rem 0.95rem -1rem
+}
+
+.message-box {
+	margin-left: 15%;
+}
+
+.msg,
+.message-box p {
+	width: max-content;
+}
+
+.msg {
+	font-size: 2.5rem;
+	color: #443e3e;
+}
+
+.message-box p {
+	color: #eee;
+}

@@ -1,0 +1,64 @@
+.count-actions .btn-round {
+	font-size: 1.5rem;
+}
+
+.counter-actions button {
+	--primary: #51518e;
+	border-radius: 0.3em;
+}
+
+.counter-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 2em;
+}
+
+.count-actions {
+	display: flex;
+	padding: 1em 0;
+	border: solid 0.1em;
+}
+
+.count-actions::after,
+.count-actions::before {
+	content: '';
+	display: block;
+	width: 30%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-radius: 50%;
+	z-index: -1;
+}
+
+.count-actions::after {
+	right: -3em;
+	border-right: solid;
+}
+
+.count-actions::before {
+	left: -3em;
+	border-left: solid;
+}
+
+.count-actions,
+.count-actions::before,
+.count-actions::after {
+	background: #e82ba7;
+}
+
+.count-actions {
+	position: relative;
+}
+
+.count-actions {
+	border-left: none;
+	border-right: none;
+	z-index: 100;
+}
+
+.counter-actions button {
+	border: solid;
+	margin: 0 1rem;
+	font-size: 1rem;
+}

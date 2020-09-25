@@ -1,0 +1,44 @@
+.draw-over {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: gray;
+	z-index: 300;
+	transform: translateY(100%);
+	transition: transform 0.2s;
+	box-shadow: 0 0 2rem;
+}
+
+.draw-over.open {
+	transform: translateY(50%);
+}
+
+#title-bar {
+	color: #141417;
+	display: flex;
+	justify-content: space-between;
+}
+
+#note {
+	width: 80%;
+	font-size: 1.4rem;
+	word-spacing: 5px;
+	line-height: 1.35;
+}
+
+#title-bar h1,
+#note {
+	margin-left: 10%;
+}
+
+#title-bar button {
+	align-self: center;
+	font-size: 1.5rem;
+	margin-right: 2rem;
+}
+
+#title-bar h1 {
+	font-size: 2.6rem;
+}

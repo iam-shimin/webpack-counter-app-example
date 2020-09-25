@@ -1,0 +1,33 @@
+.btn {
+	--primary: #000;
+	--secondary: #fff;
+  min-height: 2em;
+  min-width: 2em;
+  border: solid 0.15rem;
+  color: var(--primary);
+  background: var(--secondary);
+  transition: all 0.3s;
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--secondary);
+  background: var(--primary);
+}
+.btn:focus {
+	border-style: dashed;
+}
+
+.btn-float {
+	--primary: green;
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  font-size: 3rem;
+  z-index: 200;
+}
+
+.btn-round {
+  border: solid 0.15em;
+  border-radius: 50%;
+}
