@@ -22,7 +22,8 @@ const state = {
 scoreUpdateFunction(state.currentCountersCount);
 
 addCounterButton.addEventListener('click', event => {
-	const id = Date.now() + Math.random();
+	const timestamp = Date.now();
+	const id = timestamp + Math.random();
 	if (state.currentCountersCount === 0 && state.messageDestroyFunction) {
 		state.messageDestroyFunction();
 		state.messageDestroyFunction = null;
@@ -30,13 +31,14 @@ addCounterButton.addEventListener('click', event => {
 
 	++state.currentCountersCount;
 
-	data[id] = {root: counterWithActions(id)};
+	data[id] = {root: counterWithActions(id, timestamp), dateString: timestamp};
 	scoreUpdateFunction(state.currentCountersCount);
 })
 
-function counterWithActions(id) {
+function counterWithActions(id, time) {
 	return createCounter(app, {
 		dataId: id,
+		dateString: time,
 		onCounterBoxClick() {
 			const dataId = this.dataId;
 			if (state.drawerUpdateFunction) {
@@ -71,8 +73,8 @@ function counterWithActions(id) {
 			const item = data[id];
 			data[id].requireCacheSync = true;
 			const savedData = getSavedData();
-			const {title, note, count} = data[id];
-			savedData[id] = {title, note, count};
+			const {title, dateString, note, count} = data[id];
+			savedData[id] = {title, dateString, note, count};
 			setSavedData(savedData);
 		}
 	});
@@ -91,10 +93,11 @@ function showMessage(currentCountersCount) {
 const savedData = getSavedData();
 
 for (let cId in savedData) {
-	const {title, note, count} = savedData[cId] || {};
+	const {title, note, count, dateString} = savedData[cId] || {};
 	data[cId] = {
-		root: counterWithActions(cId),
+		root: counterWithActions(cId, dateString),
 		title,
+		dateString,
 		note,
 		count,
 		requireCacheSync: true

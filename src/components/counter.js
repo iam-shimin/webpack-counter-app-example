@@ -19,7 +19,8 @@ const counterContent = `
 export default function create(parent = document.body, props) {
 	const state = {
 		title: null,
-		count: null
+		count: null,
+		time: new Date(props.dateString)
 	};
 
 	const node = document.createElement('article');
@@ -28,6 +29,10 @@ export default function create(parent = document.body, props) {
 	const [plusButton, minusButton, saveButton, deleteButton] = node.getElementsByTagName('button');
 	const [input] = node.getElementsByTagName('input');
 	const [titleNode] = node.getElementsByTagName('h3');
+	const [time] = node.getElementsByTagName('time');
+
+	time.dateTime = state.time.toISOString();
+	time.textContent = state.time.toDateString();
 	parent.appendChild(node);
 
 	node.addEventListener('click', event => {
