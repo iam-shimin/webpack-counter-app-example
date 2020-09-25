@@ -206,6 +206,7 @@ input {
 
 #total {
   position: fixed;
+  top: 0;
   font-size: 2rem;
   text-align: center;
   width: 100%;
