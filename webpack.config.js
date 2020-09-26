@@ -6,6 +6,7 @@ module.exports = {
 	mode: 'development',
 	entry: path.resolve(__dirname, 'src', 'app.js'),
 	output: {
+		filename: '[name][contenthash].js',
 		chunkFilename: '[name].bundle.js'
 	},
 	resolve: {
@@ -31,11 +32,13 @@ module.exports = {
 		})
 	],
 
-	// optimization: {
-	// 	splitChunks: {
-	// 		name: true
-	// 	}
-	// },
+	optimization: {
+		moduleIds: 'hashed',
+		runtimeChunk: 'single'
+		// splitChunks: {
+		// 	name: true
+		// }
+	},
 
 	devServer: {
 		open: true
