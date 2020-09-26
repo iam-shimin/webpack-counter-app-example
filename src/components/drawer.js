@@ -29,6 +29,12 @@ export default function create(parent = document.body, props) {
 		update(state.currentId);
 	});
 
+	window.addEventListener('keydown', event => {
+		if (state.isOpen && event.key === 'Escape') {
+			update(state.currentId);
+		}
+	})
+
 	title.addEventListener('input', event => {
 		props.onInput(state.currentId, 'title', event.currentTarget.textContent);
 	})
