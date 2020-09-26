@@ -85,7 +85,7 @@ function counterWithActions(id, time) {
 
 function showMessage(currentCountersCount) {
 	if (currentCountersCount === 0) {
-		import('components/message').then(({default: createMessage}) => {
+		import(/* webpackPrefetch: true */'components/message').then(({default: createMessage}) => {
 			state.messageDestroyFunction = createMessage(app);
 		});
 	}

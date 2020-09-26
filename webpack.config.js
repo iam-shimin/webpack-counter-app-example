@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 	mode: 'development',
 	entry: path.resolve(__dirname, 'src', 'app.js'),
+	output: {
+		chunkFilename: '[name].bundle.js'
+	},
 	resolve: {
 		modules: ['src', path.resolve(__dirname, 'src', 'js'), 'node_modules']
 	},
@@ -27,6 +30,12 @@ module.exports = {
 			// hash,
 		})
 	],
+
+	// optimization: {
+	// 	splitChunks: {
+	// 		name: true
+	// 	}
+	// },
 
 	devServer: {
 		open: true
