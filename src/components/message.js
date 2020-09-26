@@ -1,3 +1,5 @@
+import { createElement } from 'utils/dom';
+
 let initTitle = 'No active counters exist';
 let initMessage = 'Add counters by clicking on the (+) button.';
 
@@ -6,9 +8,10 @@ const content = `
 <p>${initMessage}</p>`;
 
 export default function create(parent = document.body) {
-	const node = document.createElement('div');
-	node.className = 'message-box';
-	node.innerHTML = content;
+	const node = createElement('div', {
+		className: 'message-box',
+		innerHTML: content
+	});
 	parent.appendChild(node);
 
 	// function update(title, message) {

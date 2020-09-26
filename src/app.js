@@ -2,10 +2,12 @@ import createCounter from 'components/counter';
 import createDrawer from 'components/drawer';
 import createMessage from 'components/message';
 import createScore from 'components/score';
+import createAddButton from 'components/add-btn';
 
 import 'style/index.css';
 
-import data, { getSavedData, setSavedData } from 'storage';
+import data from 'provider';
+import { getSavedData, setSavedData } from 'utils/storage';
 
 
 const [app] = document.getElementsByTagName('main');
@@ -21,7 +23,7 @@ const state = {
 
 scoreUpdateFunction(state.currentCountersCount);
 
-addCounterButton.addEventListener('click', event => {
+createAddButton(app, event => {
 	const timestamp = Date.now();
 	const id = timestamp + Math.random();
 	if (state.currentCountersCount === 0 && state.messageDestroyFunction) {
@@ -33,7 +35,7 @@ addCounterButton.addEventListener('click', event => {
 
 	data[id] = {root: counterWithActions(id, timestamp), dateString: timestamp};
 	scoreUpdateFunction(state.currentCountersCount);
-})
+});
 
 function counterWithActions(id, time) {
 	return createCounter(app, {

@@ -1,4 +1,5 @@
-import data from 'storage';
+import data from 'provider';
+import { createElement } from 'utils/dom';
 
 const drawerContents = `
 <header id="title-bar">
@@ -13,10 +14,11 @@ export default function create(parent = document.body, props) {
 		currentId: null
 	};
 
-	const node = document.createElement('section');
-	node.id = "drawer";
-	node.className = "draw-over";
-	node.innerHTML = drawerContents;
+	const node = createElement('section', {
+		id: 'drawer',
+		className: 'draw-over',
+		innerHTML: drawerContents
+	});
 	parent.appendChild(node);
 
 	const [title] = node.getElementsByTagName('h1');
@@ -47,7 +49,7 @@ export default function create(parent = document.body, props) {
 		if (isToggleStateAction) return;
 
 		const titleText = (data[id] && data[id].title) || 'No title';
-		const noteText = (data[id] && data[id].note) || 'No note';
+		const noteText = (data[id] && data[id].note) || 'You can add more details about this counter here ...';
 		title.textContent = titleText;
 		note.textContent = noteText;
 		state.currentId = id;
