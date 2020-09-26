@@ -61,13 +61,7 @@ export default function create(parent = document.body, props) {
 
 	deleteButton.addEventListener('click', event => {
 		distroy();
-		props.onDelete(); // check count, update score, show/hide message,
-		// if (noOfArticles === 0) {
-			// const msg = document.createElement('span');
-			// msg.className = 'msg';
-			// msg.textContent = 'No active counters exist';
-			// main.appendChild(msg);
-		// }
+		props.onDelete();
 	})
 
 	saveButton.addEventListener('click', event => {
