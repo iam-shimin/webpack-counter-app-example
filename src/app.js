@@ -68,6 +68,7 @@ function counterWithActions(id, time) {
 				delete savedDataLocal[this.dataId];
 				setSavedData(savedDataLocal);
 			}
+			app.firstElementChild.focus();
 		},
 		onCounterDataChange(name, value) {
 			data[this.dataId][name] = value;
