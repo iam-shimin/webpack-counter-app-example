@@ -9,4 +9,5 @@ export default function create(parent = document.body, onClick) {
 
 	parent.appendChild(node);
 	node.addEventListener('click', onClick);
+	node.focus();
 }

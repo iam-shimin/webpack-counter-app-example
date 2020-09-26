@@ -12,7 +12,6 @@ import { getSavedData, setSavedData } from 'utils/storage';
 
 const [app] = document.getElementsByTagName('main');
 const scoreUpdateFunction = createScore();
-const addCounterButton = document.getElementById('add-counter');
 
 // state
 const state = {
