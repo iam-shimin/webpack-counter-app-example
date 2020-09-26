@@ -1,5 +1,5 @@
 import createCounter from 'components/counter';
-import createDrawer from 'components/drawer';
+// import createDrawer from 'components/drawer';
 import createMessage from 'components/message';
 import createScore from 'components/score';
 import createAddButton from 'components/add-btn';
@@ -45,14 +45,16 @@ function counterWithActions(id, time) {
 			if (state.drawerUpdateFunction) {
 				state.drawerUpdateFunction(dataId);
 			} else {
-				state.drawerUpdateFunction = createDrawer(document.body, {
-					id: dataId,
-					onInput(id, name, value) {
-						data[id][name] = value;
-						if (name === 'title') {
-							data[id].root.update(value);
+				import('components/drawer').then(({default: createDrawer}) => {
+					state.drawerUpdateFunction = createDrawer(document.body, {
+						id: dataId,
+						onInput(id, name, value) {
+							data[id][name] = value;
+							if (name === 'title') {
+								data[id].root.update(value);
+							}
 						}
-					}
+					});
 				});
 			}
 		},
