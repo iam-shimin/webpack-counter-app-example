@@ -8,3 +8,4 @@
 <!-- o caching -->
 <!-- o prefetching -->
 <!-- o preloading -->
+<!-- o loading assets like images, fonts [image-webpack-loader, url-loader, file-loader] -->
