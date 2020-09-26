@@ -1,6 +1,6 @@
 const counterContent = `
 <header>
-	<h3>No Title</h3>
+	<h3 tabindex="0">No Title</h3>
 	<div>
 		<time>12:34 pm</time>
 	</div>
@@ -40,6 +40,12 @@ export default function create(parent = document.body, props) {
 			props.onCounterBoxClick(props.dataId);
 		}
 	});
+
+	titleNode.addEventListener('keydown', event => {
+		if (event.key === 'Enter') {
+			props.onCounterBoxClick(props.dataId);
+		}
+	})
 
 	plusButton.addEventListener('click', event => {
 		const sum = (input.valueAsNumber || 0)  + 1;
