@@ -1,6 +1,6 @@
 import createCounter from 'components/counter';
 // import createDrawer from 'components/drawer';
-import createMessage from 'components/message';
+// import createMessage from 'components/message';
 import createScore from 'components/score';
 import createAddButton from 'components/add-btn';
 
@@ -85,11 +85,9 @@ function counterWithActions(id, time) {
 
 function showMessage(currentCountersCount) {
 	if (currentCountersCount === 0) {
-		// show message
-		// const message = import('./messageComponent').then(module => {
-		// 	messageDestroyFunction.value = module.default(app);
-		// });
-		state.messageDestroyFunction = createMessage(app);
+		import('components/message').then(({default: createMessage}) => {
+			state.messageDestroyFunction = createMessage(app);
+		});
 	}
 }
 
