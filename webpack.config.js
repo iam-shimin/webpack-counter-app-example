@@ -19,7 +19,7 @@ module.exports = {
 			title: 'Counter | Create counters ...',
 			scriptLoading: 'defer',
 			showErrors: true,
-			// favicon,
+			favicon: 'src/assets/favicon.ico',
 			meta: {
 				viewport: 'width=device-width, initial-scale=1'
 			},
