@@ -8,6 +8,9 @@ const drawerContents = `
 </header>
 <p id="note" contenteditable="true">{note}</p>`;
 
+const placeholderTitle = 'No title';
+const placeholderNote = 'You can add more details about this counter here ...';
+
 export default function create(parent = document.body, props) {
 	const state = {
 		isOpen: false,
@@ -44,21 +47,25 @@ export default function create(parent = document.body, props) {
 	})
 
 	function update(id) {
-		const isToggleStateAction = id === state.currentId;
-		const isDrawerOpenAction = id !== state.currentId && !state.isOpen;
-		if (isToggleStateAction || isDrawerOpenAction) {
-			requestAnimationFrame(() => {
-				requestAnimationFrame(toggleDrawer);
-			});
+		const isToggleStateAction = id === state.currentId || state.currentId === null;
+		const isDrawerOpenAction = !state.isOpen;
+		const isChangeContentAction = id !== state.currentId;
+		
+		if (isToggleStateAction) {
+			requestAnimationFrame(toggleDrawer);
 		}
 
-		if (isToggleStateAction) return;
+		if (isDrawerOpenAction) {
+			setTimeout(() => closeButton.focus());
+		}
 
-		const titleText = (data[id] && data[id].title) || 'No title';
-		const noteText = (data[id] && data[id].note) || 'You can add more details about this counter here ...';
-		title.textContent = titleText;
-		note.textContent = noteText;
-		state.currentId = id;
+		if (isChangeContentAction) {
+			const titleText = (data[id] && data[id].title) || placeholderTitle;
+			const noteText = (data[id] && data[id].note) || placeholderNote;
+			title.textContent = titleText;
+			note.textContent = noteText;
+			state.currentId = id;
+		}
 	}
 
 	update(props.id);
