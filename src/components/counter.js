@@ -36,7 +36,7 @@ export default function create(parent = document.body, props) {
 	parent.appendChild(node);
 
 	node.addEventListener('click', event => {
-		if (!['input', 'button'].includes(event.target.nodeName)) {
+		if (!['INPUT', 'BUTTON'].includes(event.target.nodeName)) {
 			props.onCounterBoxClick(props.dataId);
 		}
 	});
